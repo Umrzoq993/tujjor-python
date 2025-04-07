@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Ignore Django migration files (optional)
+**/migrations/*
+!**/migrations/__init__.py
+
+# Environment
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+*.so
+
+# Test coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Pipenv
+Pipfile.lock
+
+# mypy
+.mypy_cache/
+
+# pyright
+.pyright/
+
+# pycache
+**/__pycache__/
+
+# PyCharm
+.idea/
+
+# Build files
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+
+# Python virtual environment
+venv/
+ENV/
+env/
