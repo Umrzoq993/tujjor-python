@@ -21590,3 +21590,330 @@ Unauthorized: /api/shipments/shipments/
 "GET /api/shipments/shipments/?page=1 HTTP/1.1" 401 172
 Unauthorized: /api/shipments/shipments/
 "GET /api/shipments/shipments/?page=1 HTTP/1.1" 401 172
+Not Found: /api/api/accounts/register/
+"POST /api/api/accounts/register/ HTTP/1.1" 404 3216
+Unauthorized: /api/accounts/register/
+"POST /api/accounts/register/ HTTP/1.1" 401 172
+Bad Request: /api/accounts/register/
+"POST /api/accounts/register/ HTTP/1.1" 400 89
+Bad Request: /api/accounts/register/
+"POST /api/accounts/register/ HTTP/1.1" 400 151
+Bad Request: /api/accounts/register/
+"POST /api/accounts/register/ HTTP/1.1" 400 151
+Bad Request: /api/accounts/register/
+"POST /api/accounts/register/ HTTP/1.1" 400 151
+Bad Request: /api/accounts/register/
+"POST /api/accounts/register/ HTTP/1.1" 400 151
+Bad Request: /api/accounts/register/
+"POST /api/accounts/register/ HTTP/1.1" 400 83
+Bad Request: /api/accounts/verify-phone/
+"POST /api/accounts/verify-phone/ HTTP/1.1" 400 35
+Not Found: /api/api/accounts/users/
+"GET /api/api/accounts/users/ HTTP/1.1" 404 3206
+Not Found: /api/api/accounts/users/
+"GET /api/api/accounts/users/ HTTP/1.1" 404 3206
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 58
+Not Found: /api/api/accounts/users/5/
+"PATCH /api/api/accounts/users/5/ HTTP/1.1" 404 3214
+Unauthorized: /api/accounts/users/4/
+"PATCH /api/accounts/users/4/ HTTP/1.1" 401 172
+Unauthorized: /api/accounts/users/4/
+"PATCH /api/accounts/users/4/ HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/1/
+"PATCH /api/shipments/shipments/1/ HTTP/1.1" 401 172
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 172
+Unauthorized: /api/accounts/users/
+"GET /api/accounts/users/ HTTP/1.1" 401 172
+Internal Server Error: /api/shipments/shipment-status-history/
+Traceback (most recent call last):
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/fields.py", line 437, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/fields.py", line 104, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'ShipmentHistory' object has no attribute 'old_status'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 94, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/serializers.py", line 797, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/serializers.py", line 716, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/serializers.py", line 527, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/Users/umrzoq/Documents/projects/cargo_delivery/.venv/lib/python3.13/site-packages/rest_framework/fields.py", line 470, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `old_status` on serializer `ShipmentStatusHistorySerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `ShipmentHistory` instance.
+Original exception text was: 'ShipmentHistory' object has no attribute 'old_status'.
+"GET /api/shipments/shipment-status-history/?shipment=3 HTTP/1.1" 500 135043
+Not Found: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=1 HTTP/1.1" 404 8232
+Not Found: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=2 HTTP/1.1" 404 8232
+Not Found: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=3 HTTP/1.1" 404 8232
+Not Found: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=3 HTTP/1.1" 404 8232
+Not Found: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=2 HTTP/1.1" 404 8232
+Not Found: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=2 HTTP/1.1" 404 8232
+Not Found: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=2 HTTP/1.1" 404 8232
+Unauthorized: /api/shipments/shipment-history/
+"GET /api/shipments/shipment-history/?shipment=3 HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Not Found: /ws/shipments/
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Not Found: /ws/shipments/
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Not Found: /ws/shipments/
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Unauthorized: /api/shipments/shipments/
+Not Found: /ws/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+Not Found: /ws/shipments/
+Unauthorized: /api/shipments/shipments/
+"GET /api/shipments/shipments/ HTTP/1.1" 401 172
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Not Found: /ws/shipments/
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Not Found: /ws/shipments/
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Not Found: /ws/shipments/
+"GET /ws/shipments/ HTTP/1.1" 404 3176
+Not Found: /ws/shipments/
+Unauthorized: /api/shipments/shipments/
+Unauthorized: /api/shipments/shipments/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/shipments/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+Not Found: /
+Not Found: /ws/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+Unauthorized: /api/accounts/users/
+Unauthorized: /api/accounts/users/
+Not Found: /ws/shipments/
+Not Found: /ws/shipments/
+Unauthorized: /api/accounts/users/
+Unauthorized: /api/accounts/users/
+Not Found: /ws/shipments/
+Unauthorized: /api/shipments/shipment-history/
+Not Found: /ws/shipments/
+Unauthorized: /api/accounts/users/
+Unauthorized: /api/accounts/users/
+Unauthorized: /api/shipments/shipments/
+Unauthorized: /api/shipments/shipments/
+Unauthorized: /api/shipments/shipment-history/
+Unauthorized: /api/shipments/shipment-history/
+Unauthorized: /api/shipments/shipments/
+Unauthorized: /api/shipments/shipments/
+Unauthorized: /api/shipments/shipments/
+Not Found: /api/shipments/branches/
+Not Found: /api/shipments/branches/
+Unauthorized: /api/shipments/shipments/
+Not Found: /api/shipments/branches/
+Not Found: /api/shipments/branches/
+Not Found: /api/shipments/branches/
+Not Found: /api/shipments/branches/
+Unauthorized: /api/branches/branches/
+Unauthorized: /api/branches/branches/
+Unauthorized: /api/shipments/shipments/
+Not Found: /api/auth/token/refresh/
+Unauthorized: /api/shipments/shipments/
+Internal Server Error: /api/accounts/token/refresh/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 94, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework_simplejwt/views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework_simplejwt/serializers.py", line 141, in validate
+    refresh.outstand()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework_simplejwt/tokens.py", line 222, in outstand
+    return OutstandingToken.objects.get_or_create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'OutstandingToken' has no attribute 'objects'
+Internal Server Error: /api/accounts/token/refresh/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 94, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework_simplejwt/views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework/serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework_simplejwt/serializers.py", line 141, in validate
+    refresh.outstand()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/rest_framework_simplejwt/tokens.py", line 222, in outstand
+    return OutstandingToken.objects.get_or_create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'OutstandingToken' has no attribute 'objects'
+Bad Request: /api/shipments/shipments/
+Unauthorized: /api/branches/branches/
+Bad Request: /api/shipments/shipments/
+Unauthorized: /api/branches/branches/
+Unauthorized: /api/accounts/token/refresh/

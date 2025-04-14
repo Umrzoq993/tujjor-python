@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from .models import Shipment, ShipmentStatusHistory, ShipmentHistory
-from .serializers import ShipmentSerializer, ShipmentStatusHistorySerializer
+from .serializers import ShipmentSerializer, ShipmentStatusHistorySerializer, ShipmentHistorySerializer
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django_filters.rest_framework import DjangoFilterBackend
@@ -15,6 +15,18 @@ import logging
 logger = logging.getLogger(__name__)
 from rest_framework.views import APIView
 
+def notify_status_change(shipment, old_status):
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "shipments_group",
+        {
+            "type": "shipment_status_changed",
+            "shipment_id": shipment.id,
+            "old_status": old_status,
+            "new_status": shipment.status,
+            "tracking_code": shipment.tracking_code,
+        },
+    )
 
 class ShipmentViewSet(viewsets.ModelViewSet):
     queryset = Shipment.objects.all()
@@ -26,7 +38,7 @@ class ShipmentViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         user = self.request.user
-        # 1) Yaratganni sender qilamiz
+        # 1) Yaratgan odamni sender qilamiz
         # 2) Agar user roli 'operator' bo‘lsa, status = 'approved'
         #    Aks holda, 'client_created'
         if user.role in ['admin','operator']:
@@ -85,7 +97,6 @@ class ShipmentViewSet(viewsets.ModelViewSet):
 
         return Response({"detail": f"Shipment assigned to {new_courier.username}"})
 
-
     @action(detail=True, methods=['post'])
     def change_status(self, request, pk=None):
         shipment = self.get_object()
@@ -96,11 +107,12 @@ class ShipmentViewSet(viewsets.ModelViewSet):
         courier_name = shipment.assigned_courier.username if shipment.assigned_courier else "None"
         courier_role = shipment.assigned_courier.role if shipment.assigned_courier else "None"
 
-        # Yangi statusni set qilamiz
         shipment.status = new_status
         shipment.save()
 
-        # Log text
+        # 🔔 NOTIFICATION
+        notify_status_change(shipment, old_status)
+
         log_text = (
             f"Old Status: {old_status} -> New Status: {new_status}. "
             f"Courier: {courier_name} (role: {courier_role}). "
@@ -159,7 +171,7 @@ class ShipmentTrackView(APIView):
 
 
 class ShipmentStatusHistoryViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = ShipmentHistory.objects.all()
+    queryset = ShipmentStatusHistory.objects.all()
     serializer_class = ShipmentStatusHistorySerializer
     permission_classes = [IsAuthenticated]
 
@@ -184,3 +196,11 @@ class StatsView(APIView):
             "shipments_today": shipments_today_count,
             "branch_stats": list(branch_stats),
         })
+
+
+class ShipmentHistoryViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ShipmentHistory.objects.all()
+    serializer_class = ShipmentHistorySerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['shipment']

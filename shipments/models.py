@@ -83,6 +83,12 @@ class Shipment(models.Model):
         return f"Shipment #{self.id} ({self.tracking_code}) - {self.sender} ➜ {self.receiver_name}"
 
     def save(self, *args, **kwargs):
+        creating = self.pk is None
+        old_status = None
+
+        if not creating:
+            old_status = Shipment.objects.get(pk=self.pk).status
+
         # 1) tracking_code bo'sh bo‘lsa, avtomatik generatsiya
         if not self.tracking_code:
             self.tracking_code = self.generate_tracking_code()
@@ -92,6 +98,13 @@ class Shipment(models.Model):
             self.price = self.calculate_price()
 
         super().save(*args, **kwargs)
+
+        if old_status and old_status != self.status:
+            ShipmentStatusHistory.objects.create(
+                shipment=self,
+                old_status=old_status,
+                new_status=self.status
+            )
 
     def generate_tracking_code(self):
         """Oxirgi shipmentni topib, tracking_code ni increment qilamiz"""
@@ -148,6 +161,7 @@ class ShipmentHistory(models.Model):
     shipment = models.ForeignKey(Shipment, on_delete=models.CASCADE, related_name='history')
     created_at = models.DateTimeField(auto_now_add=True)
     log_text = models.TextField(help_text="Yuk tarixi haqida ma'lumot", blank=True, null=True)
+    ordering = ['-created_at']
 
     def __str__(self):
         return f"[{self.created_at}] Shipment {self.shipment.tracking_code}: {self.log_text}"
