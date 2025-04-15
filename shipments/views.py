@@ -1,8 +1,8 @@
 # shipments/views.py
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import action, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Shipment, ShipmentStatusHistory, ShipmentHistory
 from .serializers import ShipmentSerializer, ShipmentStatusHistorySerializer, ShipmentHistorySerializer
 from channels.layers import get_channel_layer
@@ -14,6 +14,45 @@ from .permissions import IsAdminOrOperator, IsAdmin
 import logging
 logger = logging.getLogger(__name__)
 from rest_framework.views import APIView
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from django.shortcuts import get_object_or_404
+import qrcode
+from io import BytesIO
+import os
+
+
+def generate_invoice_file(shipment_id):
+    shipment = get_object_or_404(Shipment, id=shipment_id)
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=A4)
+
+    # Sarlavha
+    p.setFont("Helvetica-Bold", 16)
+    p.drawString(200, 800, "YUK XATI")
+
+    # Ma'lumotlar
+    p.setFont("Helvetica", 12)
+    p.drawString(50, 770, f"Tracking: {shipment.tracking_code}")
+    p.drawString(50, 750, f"Yuboruvchi: {shipment.sender_name} ({shipment.sender_phone})")
+    p.drawString(50, 730, f"Qabul qiluvchi: {shipment.receiver_name} ({shipment.receiver_phone})")
+    p.drawString(50, 710, f"Og‘irligi: {shipment.weight} kg")
+    p.drawString(50, 690, f"To‘lov holati: {shipment.payment_status}")
+    p.drawString(50, 670, f"To‘lov narxi: {shipment.delivery_price} so‘m")
+
+    # QR Code
+    qr_data = f"Tujjor Express\nTracking: {shipment.tracking_code}"
+    qr_img = qrcode.make(qr_data)
+    qr_buffer = BytesIO()
+    qr_img.save(qr_buffer)
+    qr_buffer.seek(0)
+    p.drawInlineImage(qr_buffer, 400, 700, 120, 120)
+
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+    return HttpResponse(buffer, content_type='application/pdf')
 
 def notify_status_change(shipment, old_status):
     channel_layer = get_channel_layer()
@@ -55,6 +94,10 @@ class ShipmentViewSet(viewsets.ModelViewSet):
             shipment=shipment,
             log_text=text
         )
+
+    @action(detail=True, methods=["get"], url_path="invoice", permission_classes=[AllowAny])
+    def invoice(self, request, pk=None):
+        return generate_invoice_file(pk)
 
     # operator yoki admin tasdiqlash uchun action
     @action(detail=True, methods=['post'])

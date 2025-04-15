@@ -10,5 +10,5 @@ router.register(r'shipment-history', ShipmentHistoryViewSet)
 
 urlpatterns = router.urls + [
     path('stats/', StatsView.as_view(), name='stats_view'),
-    path('shipments/track/<str:code>/', ShipmentTrackView.as_view(), name='shipment_track')
+    path('shipments/track/<str:code>/', ShipmentTrackView.as_view(), name='shipment_track'),
 ]
